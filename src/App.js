@@ -1,6 +1,7 @@
 import React from "react";
 import './App.css';
 import ExpenseList from "./components/expenses/ExpenseList";
+import Greet from "./components/Greet";
 
 
 const App = () => {

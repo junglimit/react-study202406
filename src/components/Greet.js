@@ -1,13 +1,17 @@
-import React from 'react'; // 생략가능 ( 구버전은 X )
+import React from 'react';
+import Card from "./UI/Card"; // 생략가능 ( 구버전은 X )
 
-const Greet = () =>{
+const Greet = (ccc) => {
 
-    return(
-        <ul>
-            <li>사과</li>
-            <li>딸기</li>
-            <li>오렌지</li>
-        </ul>
+    return (
+        <>
+            <Card className="border-green">
+            <h1>
+                Hello REACT!
+                {ccc.children}
+            </h1>
+            </Card>
+        </>
     );
 }
 

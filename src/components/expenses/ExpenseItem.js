@@ -1,6 +1,7 @@
 import React from 'react';
 import './ExpenseItem.css'
 import ExpenseDate from "./ExpenseDate";
+import Card from "../UI/Card";
 
 const ExpenseItem = ({title, price: exPrice, date}) => {
 
@@ -32,13 +33,13 @@ const ExpenseItem = ({title, price: exPrice, date}) => {
     const formattedPrice = new Intl.NumberFormat('ko-KR').format(exPrice)
 
     return (
-        <div className='expense-item'>
-            <ExpenseDate exDate={date} />
-            <div className='expense-item__description'>
-                <h2>{title}</h2>
-                <div className='expense-item__price'>{formattedPrice}원</div>
-            </div>
-        </div>
+            <Card className='expense-item'>
+                <ExpenseDate exDate={date}/>
+                <div className='expense-item__description'>
+                    <h2>{title}</h2>
+                    <div className='expense-item__price'>{formattedPrice}원</div>
+                </div>
+            </Card>
     );
 };
 
