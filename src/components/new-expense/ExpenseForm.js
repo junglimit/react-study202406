@@ -12,8 +12,8 @@ const ExpenseForm = () => {
     // 입력칸에 있는 3개의 값을 하나의 상태값으로 관리
     const [userInput, setUserInput] = useState({
         title: '',
-        price: 0,
-        date: null
+        price: '',
+        date: ''
     })
 
 
@@ -67,6 +67,13 @@ const ExpenseForm = () => {
 
         console.log(userInput)
 
+        // form input 비우기
+        setUserInput({
+            title: '',
+            price: '',
+            date: ''
+        });
+
     }
 
     return (
@@ -74,7 +81,11 @@ const ExpenseForm = () => {
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>
-                    <input type="text" onChange={titleChangeHandler}/>
+                    <input
+                        type="text"
+                        onChange={titleChangeHandler}
+                        value={userInput.title}
+                    />
                 </div>
                 <div className="new-expense__control">
                     <label>Price</label>
@@ -83,6 +94,7 @@ const ExpenseForm = () => {
                         min="100"
                         step="100"
                         onChange={priceChangeHandler}
+                        value={userInput.price}
                     />
                 </div>
                 <div className="new-expense__control">
@@ -92,6 +104,7 @@ const ExpenseForm = () => {
                         min="2019-01-01"
                         max={getTodayDate()}
                         onChange={dateChangeHandler}
+                        value={userInput.date}
                     />
                 </div>
             </div>
