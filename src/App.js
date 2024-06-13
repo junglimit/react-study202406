@@ -10,17 +10,17 @@ const App = () => {
         {
             title: '치킨먹음',
             price: 30000,
-            date: new Date(2024,6,3)
+            date: new Date(2024,6 - 1,3)
         },
         {
             title: '족발먹음',
             price: 40000,
-            date: new Date(2024,6,7)
+            date: new Date(2024,6 - 1,7)
         },
         {
             title: '헬스장등록',
             price: 300000,
-            date: new Date(2024,6,12)
+            date: new Date(2024,6 - 1,12)
         }
 
     ];
