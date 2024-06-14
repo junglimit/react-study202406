@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ExpenseItem from './ExpenseItem';
 import ExpenseFilter from './ExpenseFilter';
 import './ExpenseList.css';
+import ExpenseChart from "../chart/ExpenseChart";
 
 const ExpenseList = ({expenses}) => {
 
@@ -45,7 +46,7 @@ const ExpenseList = ({expenses}) => {
     return (
         <div className="expenses">
             <ExpenseFilter onChangeFilter={onFilterChange}/>
-
+            <ExpenseChart />
             {content}
         </div>
     );
