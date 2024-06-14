@@ -10,7 +10,7 @@ const ExpenseItem = ({title, price: exPrice, date}) => {
 
     // useState 는 컴포넌트의 상태값을 관리하며 이 상태값은 렌더링에 영항을 미침
     /*
-        - iseState 훅의 리턴값은 배열이며
+        - useState 훅의 리턴값은 배열이며
         - 첫번째 요소는 관리할 상태값의 초기값
         - 두번째 요소는 해당 상태값을 변경할때 사용하는 setter 함수
      */
