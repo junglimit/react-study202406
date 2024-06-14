@@ -43,11 +43,8 @@ const App = () => {
 
     // ExpenseForm 에게 내려보낼 함수
     const onAddExpense = (userInput) => {
-        console.log('App.js 가 내려보낸 함수 호출!');
-
         // 배열 복사를 한 뒤에 변경부분 푸시
         setExpenseList([... expenseList, userInput]);
-
     };
 
 
