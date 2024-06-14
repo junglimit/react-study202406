@@ -29,7 +29,7 @@ const ExpenseItem = ({title, price: exPrice, date}) => {
         setItemTitle('짜장면');
     }
 
-    console.log('렌더링 전');
+    // console.log('렌더링 전');
     return (
             <Card className='expense-item'>
                 <ExpenseDate exDate={date}/>
