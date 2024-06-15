@@ -19,12 +19,12 @@ const App = () => {
 
     const [goals, setGoals] = useState(DUMMY_DATA);
 
-    // CourseInput에게 전달할 함수
+    // CourseInput 에게 전달할 함수
     const addGoalHandler = (goalObject) => {
         setGoals([...goals, goalObject]);
     };
 
-    // CouseItem에게 전달할 함수
+    // CourseItem 에게 전달할 함수
     const deleteGoalHandler = (id) => {
         // goals.splice(goals.findIndex(g => g.id === id), 1);
 

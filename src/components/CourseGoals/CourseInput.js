@@ -12,11 +12,10 @@ const CourseInput = ({onAdd}) => {
             id: Math.random().toString(),
             text: enteredText
         };
-        // console.log(newGoalObject);
 
         onAdd(newGoalObject);
 
-        setEnteredText('');
+        setEnteredText(''); // value 전송 후에 input 비워주기
     };
 
     return (
