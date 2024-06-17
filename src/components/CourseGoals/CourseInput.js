@@ -1,54 +1,56 @@
 import React, { useState } from 'react';
-import './CourseInput.css';
+import styles from './CourseInput.module.css';
 import Button from '../UI/Button';
 
-const CourseInput = ({onAdd}) => {
+const CourseInput = ({ onAdd }) => {
+
+    // console.log('s: ', styles);
+
+    const { invalid, "form-control": formControl } = styles;
 
     // 목표 인풋에 입력한 값
     const [enteredText, setEnteredText] = useState('');
 
-    // 입력값 검증을 통과했는지 여부 상태관리
-    const [isvalid, setIsvalid] = useState(true);
+    // 입력값 검증을 통과했는지 여부를 상태관리
+    const [isValid, setIsValid] = useState(true);
 
-    const formSubmitHandler = e => {
+    const formSubmitHandler = (e) => {
         e.preventDefault();
 
-        // 텍스트 없으면 false return 처리
-        if(enteredText.trim().length === 0) {
-            setIsvalid(false);
+        if (enteredText.trim().length === 0) {
+            setIsValid(false);
             return;
         }
 
         const newGoalObject = {
             id: Math.random().toString(),
-            text: enteredText
+            text: enteredText,
         };
+        // console.log(newGoalObject);
 
         onAdd(newGoalObject);
 
-        setEnteredText(''); // value 전송 후에 input 비워주기
+        setEnteredText('');
     };
 
-    const goalChangedHandler = (e) => {
+    const goalChangeHandler = (e) => {
 
         const inputValue = e.target.value;
 
         // 입력값 검증
-        if(inputValue.trim().length > 0) {
-            setIsvalid(true);
-
+        if (inputValue.trim().length > 0) {
+            setIsValid(true);
         }
-
         setEnteredText(inputValue);
     };
 
     return (
         <form onSubmit={formSubmitHandler}>
-            <div className={`form-control ${isvalid ? '' : 'invalid'}`}>
+            <div className={`${formControl} ${!isValid ? invalid : ''}`}>
                 <label>나의 목표</label>
                 <input
                     type="text"
-                    onChange={goalChangedHandler}
+                    onChange={goalChangeHandler}
                     value={enteredText}
                 />
             </div>
