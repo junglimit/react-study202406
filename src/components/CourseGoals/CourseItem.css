@@ -6,3 +6,12 @@
     padding: 1rem 2rem;
     cursor: pointer;
 }
+
+.form-control.invalid input {
+    border-color: red;
+    background: #ffd7d7;
+}
+
+.form-control.invalid label {
+    color: red;
+}
