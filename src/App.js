@@ -11,7 +11,7 @@ const App = () => {
         <>
             <MainHeader />
             <main>
-                <Home />
+                {/*<Home />*/}
                 <Login />
             </main>
 
