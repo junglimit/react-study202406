@@ -4,7 +4,7 @@ import AuthContext from '../../store/auth-context';
 
 const Navigation = ({ onLogout }) => {
 
-    const loginPage = (
+    const loginPage = (onLogout) =>(
         <>
             <li>
                 <a href="/">MyPage</a>
@@ -22,12 +22,12 @@ const Navigation = ({ onLogout }) => {
 
     return (
         <AuthContext.Consumer>
-            {({ isLoggedIn }) => {
+            {({ isLoggedIn, onLogout }) => {
                 // console.log(context);
                 return (
                     <nav className={styles.nav}>
                         <ul>
-                            {isLoggedIn ? loginPage : anonymousPage}
+                            {isLoggedIn ? loginPage(onLogout) : anonymousPage}
                         </ul>
                     </nav>
                 );
