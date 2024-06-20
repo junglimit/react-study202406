@@ -1,22 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {MdDelete, MdDone} from "react-icons/md";
 
 import './scss/TodoItem.scss';
 
-const TodoItem = () => {
+const TodoItem = ({ item }) => {
 
-    const [click, setClick] = useState(false);
-
-    const toggle = () => {
-        setClick(!click);
-    }
+    const { title, done } = item;
 
     return (
-        <li className='todo-list-item' onClick={toggle}>
-            <div className={click === false ? 'check-circle' : 'check-circle active'} >
-                <MdDone/>
+        <li className='todo-list-item'>
+            <div className='check-circle'>
+                {done && <MdDone/>}
             </div>
-            <span className={click === false ? 'text' : 'text finish'} >할 일 어쩌구~~</span>
+            <span className='text'>{title}</span>
             <div className='remove'>
                 <MdDelete/>
             </div>
