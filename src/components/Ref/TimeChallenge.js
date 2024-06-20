@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 
-    let timer;
 const TimerChallenge = ({title, targetTime}) => {
+
+    // timer 를 ref 변수로 관리
+    const timer = useRef();
 
     // 타이머가 시작되었는지를 확인하는 상태값
     const [timerStarted, setTimerStarted] = useState(false);
@@ -11,7 +13,7 @@ const TimerChallenge = ({title, targetTime}) => {
 
     const startHandler = e => {
 
-        timer = setTimeout(() => {
+        timer.current = setTimeout(() => {
             // console.log('시간 만료 배윙');
         setTimerExpired(true);
         }, targetTime * 1000)
@@ -19,10 +21,8 @@ const TimerChallenge = ({title, targetTime}) => {
         setTimerStarted(true);
     }
 
-    // 전역변수로 timer 설정시 연속으로 클릭하면 전에 클릭한 timer 가 정상작동하지 않음
-    // 모든 TimeChallenge 컴포넌트가 1개의 timer 를 공유하기 때문
     const stopHandler = e => {
-        clearTimeout(timer);
+        clearTimeout(timer.current);
     }
 
     return (
