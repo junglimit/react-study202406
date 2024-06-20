@@ -38,10 +38,24 @@ const TodoTemplate = () => {
         setTodoList(todoList.filter(todo => todo.id !== id));
     };
 
+    const checkTodo = id => {
+        const copyTodoList = [...todoList];
+
+        const foundTodo = copyTodoList.find(todo => todo.id === id);
+        foundTodo.done = !foundTodo.done;
+        console.log(foundTodo);
+
+        setTodoList(copyTodoList);
+
+    };
+
+    // 남은 할 일 개수 세기
+    const countRestTodo = todoList.filter(todo => !todo.done).length;
+
     return (
         <div className='TodoTemplate'>
-            <TodoHeader />
-            <TodoMain todos={todoList} onRemove={removeTodo} />
+            <TodoHeader count={countRestTodo}/>
+            <TodoMain todos={todoList} onRemove={removeTodo} onCheck={checkTodo} />
             <TodoInput onAdd={addTodo} />
         </div>
     );
