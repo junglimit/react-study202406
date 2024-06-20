@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+    let timer;
 const TimerChallenge = ({title, targetTime}) => {
 
     // 타이머가 시작되었는지를 확인하는 상태값
@@ -8,7 +9,6 @@ const TimerChallenge = ({title, targetTime}) => {
     // 타겟시간이 종료되었는지 여부
     const [timerExpired, setTimerExpired] = useState(false);
 
-    let timer;
     const startHandler = e => {
 
         timer = setTimeout(() => {
@@ -19,8 +19,8 @@ const TimerChallenge = ({title, targetTime}) => {
         setTimerStarted(true);
     }
 
-    // stop 이 작동하지 않는 이유는 start 할때 timer 변수가 지역변수이기 때문에 상태변수의 setter 호출이 일어날때 리렌더링으로 새로운 지역변수로 바뀜
-    // -> stop 시의 timer 와 start 시의 timer 는 다른 변수다
+    // 전역변수로 timer 설정시 연속으로 클릭하면 전에 클릭한 timer 가 정상작동하지 않음
+    // 모든 TimeChallenge 컴포넌트가 1개의 timer 를 공유하기 때문
     const stopHandler = e => {
         clearTimeout(timer);
     }
