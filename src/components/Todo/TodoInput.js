@@ -1,37 +1,33 @@
-import React, {useState} from 'react';
-import {MdAdd} from "react-icons/md";
+import React, { useState } from 'react';
+import { MdAdd } from 'react-icons/md';
 
 import './scss/TodoInput.scss';
 
 const TodoInput = () => {
+    // 입력창 토글링 상태값
+    const [open, setOpen] = useState(false);
 
-    const [clickBtn, setClickBtn] = useState(false);
-
-    const [enteredText, setEnteredText] = useState('');
-
-    const toggle = () => {
-        setClickBtn(!clickBtn)
-    }
-
-    const TodoHandler = (e) => {
-
-        const newTodo = enteredText;
-    }
+    // 버튼 토글링 함수
+    const onToggle = () => setOpen(prevOpen => !prevOpen);
 
     return (
         <>
-            <div className={clickBtn === false ? 'form-wrapper' : 'form-wrapper open'}>
-                <form className='insert-form' onSubmit={TodoHandler}>
-                    <input
-                        onchange={e => {setEnteredText(e.target.value)}}
-                        type='text'
-                        placeholder='할 일을 입력 후, 엔터를 누르세요!'
-                        value={enteredText}
-                    />
-                </form>
-            </div>
-            <button className={clickBtn === false ? 'insert-btn' : 'insert-btn open'} onClick={toggle}>
-                <MdAdd/>
+            {open && (
+                <div className="form-wrapper">
+                    <form className="insert-form">
+                        <input
+                            type="text"
+                            placeholder="할 일을 입력 후, 엔터를 누르세요!"
+                        />
+                    </form>
+                </div>
+            )}
+
+            <button
+                className={`insert-btn ${open ? 'open' : undefined}`}
+                onClick={onToggle}
+            >
+                <MdAdd />
             </button>
         </>
     );
