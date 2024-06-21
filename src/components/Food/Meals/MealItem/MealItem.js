@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from './MealItem.module.scss';
 import MealItemForm from './MealItemForm';
+import CartContext from "../../../../store/cart-context";
 
 const MealItem = ({id, price, description, name}) => {
+
+    // Context 에서 중앙관리되는 데이터들을 한번에 소비할 수 있는 Hook
+    const {addItem} = useContext(CartContext);
 
     const { meal, description: desc, price: priceStyle } = styles;
 
@@ -11,6 +15,8 @@ const MealItem = ({id, price, description, name}) => {
     // MealItemForm 에서 선택한 수량값을 끌어올려줄 함수
     const addToCartHandler = (amount) => {
 
+
+
         // 장바구니에 보낼 객체
         const item ={
             id: id,
@@ -18,7 +24,9 @@ const MealItem = ({id, price, description, name}) => {
             amount: +amount ,
             price: price
         }
-        console.log('item: ' , item);
+        // console.log('item: ' , item);
+
+        addItem(item);
     };
 
     return (
