@@ -42,6 +42,7 @@ const CartProvider = ({ children }) => {
         dispatchCartAction({
             type: 'ADD',
             value: item
+
         });
     };
 
