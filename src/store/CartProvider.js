@@ -26,12 +26,10 @@ const cartReducer = (state, action) => {
         const updatePrice = state.totalPrice + (action.value.price * action.value.amount);
 
         // 갯수 상태 업데이트
-        const updateAmount = state.totalAmount + action.value.amount;
 
         return {
             items: updateCartItems,
             totalPrice: updatePrice,
-            totalAmount: updateAmount,
         }
     } else if (action.type === 'REMOVE') { // 장바구니 제거
         return null; // 새로운 상태
@@ -65,7 +63,6 @@ const CartProvider = ({ children }) => {
         cartItems: cartState.items, // 상태값
         addItem: addItemHandler, // 상태를 업데이트하는 함수
         totalPrice: cartState.totalPrice,
-        totalAmount: cartState.totalAmount,
         removeItem: id => {}, // 상태를 업데이트하는 함수
     };
 
