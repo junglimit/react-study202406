@@ -7,6 +7,7 @@ import Events, { loader as eventListLoader } from './components/RouteExample/pag
 import EventDetail, { loader as eventDetailLoader } from './components/RouteExample/pages/EventDetail';
 import EventLayout from './components/RouteExample/layout/EventLayout';
 import NewEvent from './components/RouteExample/pages/NewEvent';
+import EditPage from "./components/RouteExample/pages/EditPage";
 
 // 라우터 설정
 const router = createBrowserRouter([
@@ -27,10 +28,15 @@ const router = createBrowserRouter([
                     },
                     {
                         path: ':eventId',
-                        element: <EventDetail />,
-                        loader: eventDetailLoader
+                        loader: eventDetailLoader,
+                        id: 'event-detail',
+                        children: [
+                            { index: true, element: <EventDetail /> },
+                            { path: 'edit', element: <EditPage /> }
+                        ]
                     },
-                    { path: 'new', element: <NewEvent /> }
+                    { path: 'new', element: <NewEvent /> },
+
                 ]
             },
         ]
