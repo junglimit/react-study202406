@@ -8,10 +8,12 @@ const Events = () => {
     const eventList = useLoaderData();
     console.log(eventList);
 
+
+
     return (
         <>
             <h1>Events Page</h1>
-            <EventList eventList={eventList} />
+            <EventList eventList={eventList}/>
         </>
     );
 };

@@ -16,9 +16,10 @@ const router = createBrowserRouter([
         element: <RootLayout />,
         errorElement: <ErrorPage />,
         children: [
+            // WelcomePage = path 넣지 말고 index: true 쓰기
             { index: true, element: <Home /> },
             {
-                path: 'events',
+                path: 'events', // 절대경로 쓰지 말고 문자열로 ./ 기능쓰기 ( 상대경로 )
                 element: <EventLayout />,
                 children: [
                     {
