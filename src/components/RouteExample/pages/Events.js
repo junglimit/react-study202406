@@ -23,7 +23,9 @@ export default Events;
 // loader를 app.js로부터 아웃소싱
 export const loader = async () => {
 
+    // loader 에서 fetch 의 결과를 바로 리턴하면 알아서 json 을 추출해줌
     const response = await fetch('http://localhost:8282/events?sort=date');
+
 
     if (!response.ok) {
         const errorText = await response.text();
